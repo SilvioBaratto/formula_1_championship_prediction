@@ -1,0 +1,70 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+!README.md
+docs/
+papers/
+
+# Data files (handled by volumes)
+data/
+models/
+.fastf1_cache/
+
+# Logs
+logs/
+*.log
+
+# Testing
+tests/
+.coverage
+htmlcov/
+
+# Frontend build artifacts
+f1_frontend/node_modules/
+f1_frontend/dist/
+f1_frontend/.angular/
+
+# Environment
+.env
+.env.local
+.env.*
+
+# Docker
+Dockerfile
+docker-compose*.yml
+.dockerignore

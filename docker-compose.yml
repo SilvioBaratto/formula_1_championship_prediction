@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  # FastAPI Backend
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    container_name: f1-api
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount data directories for persistence
+      - ./data:/app/data
+      - ./models:/app/models
+      # Mount source code for hot reload in development
+      - ./src:/app/src
+      - ./api:/app/api
+      # FastF1 cache
+      - ./.fastf1_cache:/root/.fastf1_cache
+    environment:
+      - PYTHONUNBUFFERED=1
+      - ENVIRONMENT=development
+    networks:
+      - f1-network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+
+  # Angular Frontend
+  frontend:
+    build:
+      context: ./f1_frontend
+      dockerfile: Dockerfile
+    container_name: f1-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+    networks:
+      - f1-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+networks:
+  f1-network:
+    driver: bridge
+
+volumes:
+  fastf1-cache:
+    driver: local

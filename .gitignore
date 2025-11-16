@@ -1,0 +1,103 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Project-specific
+CLAUDE.md
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# FastF1 cache
+cache/
+fastf1_cache/
+.fastf1_cache/
+**/cache/
+
+# Data files (too large for git)
+data/raw/*.csv
+data/raw/*.json
+data/processed/*.csv
+data/processed/*.pkl
+data/distributions/*.pkl
+data/models/*.pkl
+data/models/*.joblib
+data/models/*.h5
+
+# Keep directory structure but ignore contents
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/distributions/.gitkeep
+!data/models/.gitkeep
+
+# Model outputs
+models/*.pkl
+models/*.joblib
+models/*.h5
+models/*.pt
+models/*.pth
+
+# Logs
+logs/
+*.log
+
+# Environment variables
+.env
+.env.local
+
+# Testing
+.coverage
+.pytest_cache/
+htmlcov/
+.tox/
+
+# Results and outputs
+results/
+outputs/
+figures/
+*.png
+!result.png
+*.jpg
+*.pdf
+!docs/figures/.gitkeep
+
+# OS
+Thumbs.db

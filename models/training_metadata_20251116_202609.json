@@ -1,0 +1,62 @@
+{
+  "timestamp": "2025-11-16T20:26:09.476453",
+  "best_model": "gradient_boosting",
+  "training_years": [
+    2022,
+    2023,
+    2024
+  ],
+  "n_features": 26,
+  "features": [
+    "grid_position",
+    "grid_squared",
+    "grid_log",
+    "points_last_3_races",
+    "avg_finish_last_5_races",
+    "dnf_rate_last_10_races",
+    "cumulative_points",
+    "championship_position",
+    "team_avg_position_season",
+    "track_type_high_speed_low_downforce",
+    "track_type_street_circuit_high_downforce",
+    "track_type_high_downforce_technical",
+    "track_type_medium_downforce_balanced",
+    "track_type_high_altitude_special",
+    "track_type_mixed_characteristics",
+    "avg_finish_this_track_type",
+    "air_temp",
+    "track_temp",
+    "humidity",
+    "rainfall",
+    "wind_speed",
+    "gap_to_pole",
+    "driver_avg_position_historical",
+    "team_avg_position_historical",
+    "driver_skill_vs_team",
+    "team_strength"
+  ],
+  "variance_decomposition": {
+    "constructor_pct": 30.81535611155167,
+    "driver_pct": 69.18464388844832
+  },
+  "cv_results": {
+    "random_forest": {
+      "avg_rmse": 3.5910822054481124,
+      "avg_mae": 2.6916590457310163,
+      "avg_r2": 0.6099772745712302,
+      "avg_spearman_rho": 0.7765150098417267
+    },
+    "gradient_boosting": {
+      "avg_rmse": 3.5261149193402246,
+      "avg_mae": 2.5900932157805236,
+      "avg_r2": 0.6240626288152143,
+      "avg_spearman_rho": 0.7869104452593702
+    },
+    "svr": {
+      "avg_rmse": 3.6737435031590437,
+      "avg_mae": 2.549359601200587,
+      "avg_r2": 0.5918536662179675,
+      "avg_spearman_rho": 0.7670357329423098
+    }
+  }
+}

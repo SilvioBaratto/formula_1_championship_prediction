@@ -1,0 +1,197 @@
+======================================================================
+CIRCUIT CLASSIFICATION TEMPLATE
+======================================================================
+
+Total circuits found: 26
+
+
+Location: Austin
+  Country: United States
+  Event Names: United States Grand Prix
+  Years: [2022, 2023, 2024, 2025]
+
+Location: Baku
+  Country: Azerbaijan
+  Event Names: Azerbaijan Grand Prix
+  Years: [2022, 2023, 2024, 2025]
+
+Location: Barcelona
+  Country: Spain
+  Event Names: Spanish Grand Prix
+  Years: [2022, 2023, 2024, 2025]
+
+Location: Budapest
+  Country: Hungary
+  Event Names: Hungarian Grand Prix
+  Years: [2022, 2023, 2024, 2025]
+
+Location: Imola
+  Country: Italy
+  Event Names: Emilia Romagna Grand Prix
+  Years: [2022, 2024, 2025]
+
+Location: Jeddah
+  Country: Saudi Arabia
+  Event Names: Saudi Arabian Grand Prix
+  Years: [2022, 2023, 2024, 2025]
+
+Location: Las Vegas
+  Country: United States
+  Event Names: Las Vegas Grand Prix
+  Years: [2023, 2024, 2025]
+
+Location: Le Castellet
+  Country: France
+  Event Names: French Grand Prix
+  Years: [2022]
+
+Location: Lusail
+  Country: Qatar
+  Event Names: Qatar Grand Prix
+  Years: [2023, 2024, 2025]
+
+Location: Marina Bay
+  Country: Singapore
+  Event Names: Singapore Grand Prix
+  Years: [2022, 2023, 2024, 2025]
+
+Location: Melbourne
+  Country: Australia
+  Event Names: Australian Grand Prix
+  Years: [2022, 2023, 2024, 2025]
+
+Location: Mexico City
+  Country: Mexico
+  Event Names: Mexico City Grand Prix
+  Years: [2022, 2023, 2024, 2025]
+
+Location: Miami
+  Country: United States
+  Event Names: Miami Grand Prix
+  Years: [2022, 2023, 2024]
+
+Location: Miami Gardens
+  Country: United States
+  Event Names: Miami Grand Prix
+  Years: [2025]
+
+Location: Monaco
+  Country: Monaco
+  Event Names: Monaco Grand Prix
+  Years: [2022, 2023, 2024, 2025]
+
+Location: Montréal
+  Country: Canada
+  Event Names: Canadian Grand Prix
+  Years: [2022, 2023, 2024, 2025]
+
+Location: Monza
+  Country: Italy
+  Event Names: Italian Grand Prix
+  Years: [2022, 2023, 2024, 2025]
+
+Location: Sakhir
+  Country: Bahrain
+  Event Names: Bahrain Grand Prix
+  Years: [2022, 2023, 2024, 2025]
+
+Location: Shanghai
+  Country: China
+  Event Names: Chinese Grand Prix
+  Years: [2024, 2025]
+
+Location: Silverstone
+  Country: Great Britain
+  Event Names: British Grand Prix
+  Years: [2022, 2023, 2024, 2025]
+
+Location: Spa-Francorchamps
+  Country: Belgium
+  Event Names: Belgian Grand Prix
+  Years: [2022, 2023, 2024, 2025]
+
+Location: Spielberg
+  Country: Austria
+  Event Names: Austrian Grand Prix
+  Years: [2022, 2023, 2024, 2025]
+
+Location: Suzuka
+  Country: Japan
+  Event Names: Japanese Grand Prix
+  Years: [2022, 2023, 2024, 2025]
+
+Location: São Paulo
+  Country: Brazil
+  Event Names: São Paulo Grand Prix
+  Years: [2022, 2023, 2024, 2025]
+
+Location: Yas Island
+  Country: Abu Dhabi
+  Event Names: Abu Dhabi Grand Prix
+  Years: [2022, 2023, 2024, 2025]
+
+Location: Zandvoort
+  Country: Netherlands
+  Event Names: Dutch Grand Prix
+  Years: [2022, 2023, 2024, 2025]
+
+======================================================================
+PYTHON DICTIONARY TEMPLATE
+======================================================================
+
+# Track type categories:
+# 1. 'high_speed_low_downforce' - Long straights, few corners (Monza-style)
+# 2. 'street_circuit_high_downforce' - Street circuits with barriers (Monaco-style)
+# 3. 'high_downforce_technical' - Permanent circuits with many corners (Suzuka-style)
+# 4. 'medium_downforce_balanced' - Mix of straights and corners (Silverstone-style)
+# 5. 'high_altitude_special' - High altitude circuits (Mexico City)
+# 6. 'mixed_characteristics' - Doesn't fit other categories clearly
+
+TRACK_CLUSTERS = {
+    'high_speed_low_downforce': [
+        # Add circuits here
+    ],
+    'street_circuit_high_downforce': [
+        # Add circuits here
+    ],
+    'high_downforce_technical': [
+        # Add circuits here
+    ],
+    'medium_downforce_balanced': [
+        # Add circuits here
+    ],
+    'high_altitude_special': [
+        # Add circuits here
+    ],
+    'mixed_characteristics': [
+        # Add circuits here
+    ]
+}
+
+# Circuit list to classify:
+# 'Austin',  # United States - United States Grand Prix
+# 'Baku',  # Azerbaijan - Azerbaijan Grand Prix
+# 'Barcelona',  # Spain - Spanish Grand Prix
+# 'Budapest',  # Hungary - Hungarian Grand Prix
+# 'Imola',  # Italy - Emilia Romagna Grand Prix
+# 'Jeddah',  # Saudi Arabia - Saudi Arabian Grand Prix
+# 'Las Vegas',  # United States - Las Vegas Grand Prix
+# 'Le Castellet',  # France - French Grand Prix
+# 'Lusail',  # Qatar - Qatar Grand Prix
+# 'Marina Bay',  # Singapore - Singapore Grand Prix
+# 'Melbourne',  # Australia - Australian Grand Prix
+# 'Mexico City',  # Mexico - Mexico City Grand Prix
+# 'Miami',  # United States - Miami Grand Prix
+# 'Miami Gardens',  # United States - Miami Grand Prix
+# 'Monaco',  # Monaco - Monaco Grand Prix
+# 'Montréal',  # Canada - Canadian Grand Prix
+# 'Monza',  # Italy - Italian Grand Prix
+# 'Sakhir',  # Bahrain - Bahrain Grand Prix
+# 'Shanghai',  # China - Chinese Grand Prix
+# 'Silverstone',  # Great Britain - British Grand Prix
+# 'Spa-Francorchamps',  # Belgium - Belgian Grand Prix
+# 'Spielberg',  # Austria - Austrian Grand Prix
+# 'Suzuka',  # Japan - Japanese Grand Prix
+# 'São Paulo',  # Brazil - São Paulo Grand Prix
+# 'Yas Island',  # Abu Dhabi - Abu Dhabi Grand Prix
+# 'Zandvoort',  # Netherlands - Dutch Grand Prix
