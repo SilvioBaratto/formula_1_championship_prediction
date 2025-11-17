@@ -61,13 +61,17 @@ The Bayesian module decomposes race performance variance into **driver skill** a
 
 Given race results with finish positions $P$, the total variance is:
 
-$$\sigma^2_{\text{total}} = \text{Var}(P)$$
+```math
+\sigma^2_{\text{total}} = \text{Var}(P)
+```
 
 #### Between-Team Variance (Constructor Effect)
 
 The variance attributable to team/constructor differences:
 
-$$\sigma^2_{\text{between}} = \frac{1}{N} \sum_{t} n_t \left( \mu_t - \mu_{\text{grand}} \right)^2$$
+```math
+\sigma^2_{\text{between}} = \frac{1}{N} \sum_{t} n_t \left( \mu_t - \mu_{\text{grand}} \right)^2
+```
 
 where:
 - $\mu_t$ = mean finish position for team $t$
@@ -79,19 +83,27 @@ where:
 
 The variance attributable to driver skill differences within teams:
 
-$$\sigma^2_{\text{within}} = \sigma^2_{\text{total}} - \sigma^2_{\text{between}}$$
+```math
+\sigma^2_{\text{within}} = \sigma^2_{\text{total}} - \sigma^2_{\text{between}}
+```
 
 #### Contribution Percentages
 
-$$\text{Constructor Contribution} = \frac{\sigma^2_{\text{between}}}{\sigma^2_{\text{total}}} \times 100\%$$
+```math
+\text{Constructor Contribution} = \frac{\sigma^2_{\text{between}}}{\sigma^2_{\text{total}}} \times 100\%
+```
 
-$$\text{Driver Contribution} = \frac{\sigma^2_{\text{within}}}{\sigma^2_{\text{total}}} \times 100\%$$
+```math
+\text{Driver Contribution} = \frac{\sigma^2_{\text{within}}}{\sigma^2_{\text{total}}} \times 100\%
+```
 
 #### Driver Skill Adjustment
 
 For each driver-team combination, we calculate a skill adjustment relative to team baseline:
 
-$$\text{Skill}_{\text{adj}}(d, t) = \mu_t - \mu_{d|t}$$
+```math
+\text{Skill}_{\text{adj}}(d, t) = \mu_t - \mu_{d|t}
+```
 
 where:
 - $\mu_t$ = team's average finish position across all drivers
@@ -110,10 +122,16 @@ The Monte Carlo simulator runs $N = 10,000$ stochastic race simulations to model
 For each driver $d$ in team $t$, the finish position is sampled from a hierarchical distribution:
 
 **Hybrid Mode** (ML-informed):
-$$P_{d,t} \sim \mathcal{N}\left(\mu_{\text{ML}}(d, t), \sigma_{\text{hist}}(d, t)\right)$$
+
+```math
+P_{d,t} \sim \mathcal{N}\left(\mu_{\text{ML}}(d, t), \sigma_{\text{hist}}(d, t)\right)
+```
 
 **Pure Historical Mode**:
-$$P_{d,t} \sim \text{Historical}_{\text{dist}}(d, t)$$
+
+```math
+P_{d,t} \sim \text{Historical}_{\text{dist}}(d, t)
+```
 
 where $\mu_{\text{ML}}$ is the machine learning predicted position and $\sigma_{\text{hist}}$ is the historical performance variance.
 
@@ -121,7 +139,9 @@ where $\mu_{\text{ML}}$ is the machine learning predicted position and $\sigma_{
 
 The probability of a driver DNF is computed as:
 
-$$P_{\text{DNF}}(d, t, k) = \frac{P_{\text{DNF}}^{\text{driver}}(d) + P_{\text{DNF}}^{\text{team}}(t) + P_{\text{DNF}}^{\text{track}}(k)}{3}$$
+```math
+P_{\text{DNF}}(d, t, k) = \frac{P_{\text{DNF}}^{\text{driver}}(d) + P_{\text{DNF}}^{\text{team}}(t) + P_{\text{DNF}}^{\text{track}}(k)}{3}
+```
 
 where $k$ represents the track type (street circuit, high-speed, technical, etc.).
 
@@ -131,7 +151,9 @@ If $U \sim \text{Uniform}(0, 1) < P_{\text{DNF}}$, the driver is assigned positi
 
 Wet weather probability varies by track type. When wet conditions occur:
 
-$$P_{\text{adjusted}} = P_{\text{dry}} - \alpha_{\text{wet}}(d) + \mathcal{N}(0, c \cdot \sigma)$$
+```math
+P_{\text{adjusted}} = P_{\text{dry}} - \alpha_{\text{wet}}(d) + \mathcal{N}(0, c \cdot \sigma)
+```
 
 where:
 - $\alpha_{\text{wet}}(d)$ = driver's wet weather skill advantage (historical)
@@ -141,7 +163,9 @@ where:
 
 When a safety car deploys (probability $P_{\text{SC}}$ by track type):
 
-$$P_{\text{SC\\_adjusted}} = P_{\text{sampled}} + \mathcal{N}(0, v_k \cdot 0.5)$$
+```math
+P_{\text{SC\_adjusted}} = P_{\text{sampled}} + \mathcal{N}(0, v_k \cdot 0.5)
+```
 
 where $v_k$ is the track-specific position volatility (typically 3-4 positions for street circuits).
 
@@ -149,7 +173,9 @@ where $v_k$ is the track-specific position volatility (typically 3-4 positions f
 
 After $N$ simulations, the championship win probability for driver $d$ is:
 
-$$P_{\text{win}}(d) = \frac{1}{N} \sum_{i=1}^{N} \mathbb{1}\left[\text{Position}_d^{(i)} = 1\right]$$
+```math
+P_{\text{win}}(d) = \frac{1}{N} \sum_{i=1}^{N} \mathbb{1}\left[\text{Position}_d^{(i)} = 1\right]
+```
 
 with margin of error $\approx \pm 1\%$ at 95% confidence (by Central Limit Theorem for $N=10,000$).
 
@@ -192,24 +218,36 @@ The system computes 50+ features per race entry:
 Model performance is evaluated using:
 
 **Regression Metrics**:
-$$\text{RMSE} = \sqrt{\frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}$$
 
-$$\text{MAE} = \frac{1}{n}\sum_{i=1}^{n}|y_i - \hat{y}_i|$$
+```math
+\text{RMSE} = \sqrt{\frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}
+```
 
-$$R^2 = 1 - \frac{\sum_{i}(y_i - \hat{y}_i)^2}{\sum_{i}(y_i - \bar{y})^2}$$
+```math
+\text{MAE} = \frac{1}{n}\sum_{i=1}^{n}|y_i - \hat{y}_i|
+```
+
+```math
+R^2 = 1 - \frac{\sum_{i}(y_i - \hat{y}_i)^2}{\sum_{i}(y_i - \bar{y})^2}
+```
 
 **Ranking Metrics**:
-$$\rho_{\text{Spearman}} = \text{corr}\left(\text{rank}(y), \text{rank}(\hat{y})\right)$$
 
-$$\tau_{\text{Kendall}} = \frac{n_{\text{concordant}} - n_{\text{discordant}}}{n(n-1)/2}$$
+```math
+\rho_{\text{Spearman}} = \text{corr}\left(\text{rank}(y), \text{rank}(\hat{y})\right)
+```
+
+```math
+\tau_{\text{Kendall}} = \frac{n_{\text{concordant}} - n_{\text{discordant}}}{n(n-1)/2}
+```
 
 #### Leave-One-Year-Out Cross-Validation
 
 To ensure generalization to future seasons, models are validated using LOYO-CV:
 
-For each year $y \in \{2022, 2023, 2024\}$:
-- Train on: $\mathcal{D}_{\text{train}} = \{2022, 2023, 2024\} \setminus \{y\}$
-- Test on: $\mathcal{D}_{\text{test}} = \{y\}$
+For each year $y \in \\{2022, 2023, 2024\\}$:
+- Train on: $\mathcal{D}\_{\text{train}} = \\{2022, 2023, 2024\\} \setminus \\{y\\}$
+- Test on: $\mathcal{D}\_{\text{test}} = \\{y\\}$
 
 This prevents temporal leakage where future information influences past predictions.
 
@@ -224,7 +262,10 @@ The production system combines ML and Monte Carlo methods:
 **Step 2**: Generate ML baseline predictions for remaining 2025 races
 
 **Step 3**: Use ML predictions as distribution means in Monte Carlo:
-$$P_{d,t}^{\text{race}} \sim \mathcal{N}\left(\mu_{\text{ML}}(d, t), \sigma_{\text{hist}}(d, t)\right)$$
+
+```math
+P_{d,t}^{\text{race}} \sim \mathcal{N}\left(\mu_{\text{ML}}(d, t), \sigma_{\text{hist}}(d, t)\right)
+```
 
 **Step 4**: Run 10,000 championship simulations incorporating DNFs, weather, and safety cars
 
